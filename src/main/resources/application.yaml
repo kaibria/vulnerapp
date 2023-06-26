@@ -10,9 +10,18 @@ spring:
     open-in-view: false
   web:
     resources:
-      static-locations: # quickhack to facilitate static development
+      static-locations:
         - file:src/main/resources/static/
         - classpath:/static/
+  security:
+    require-ssl: true
+  servlet:
+    ssl:
+      key-store: file:c:/users/Kai/documents/bbw-m183-vulnerapp/selfsigned_localhost_sslserver.jks # Here we are pointing to the keystore file.
+      key-store-password: passvulner
+      key-store-type: JKS
+      key-alias: selfsigned_localhost_sslserver
+      key-password: passvulner
 logging:
   pattern:
     dateformat: HH:mm:ss
@@ -23,3 +32,5 @@ management:
     web:
       exposure:
         include: '*'
+server:
+  port: 8443

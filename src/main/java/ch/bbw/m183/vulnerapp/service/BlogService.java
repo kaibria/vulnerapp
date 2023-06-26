@@ -1,8 +1,5 @@
 package ch.bbw.m183.vulnerapp.service;
 
-import java.util.UUID;
-import java.util.stream.Stream;
-
 import ch.bbw.m183.vulnerapp.datamodel.BlogEntity;
 import ch.bbw.m183.vulnerapp.repository.BlogRepository;
 import lombok.RequiredArgsConstructor;
@@ -10,8 +7,12 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.UUID;
+import java.util.stream.Stream;
 
 @Service
 @Transactional
@@ -20,16 +21,29 @@ public class BlogService {
 
 	private final BlogRepository blogRepository;
 
+
 	public Page<BlogEntity> getBlogs(Pageable pageable) {
 		return blogRepository.findAll(pageable);
 	}
 
+	@PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
 	public UUID createBlog(BlogEntity blog) {
 		blog.setId(UUID.randomUUID());
 		return blogRepository.save(blog)
 				.getId();
 	}
 
+	@PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
+	public BlogEntity updateBlog(UUID blogId, BlogEntity updatedBlog) {
+		BlogEntity existingBlog = blogRepository.findById(blogId).orElseThrow();
+
+		existingBlog.setTitle(updatedBlog.getTitle());
+		existingBlog.setBody(updatedBlog.getBody());
+
+		return blogRepository.save(existingBlog);
+	}
+
+	@PreAuthorize("hasAnyAuthority('ADMIN')")
 	@EventListener(ContextRefreshedEvent.class)
 	public void loadTestBlogs() {
 		// sample XSS: <img src=a onerror='alert();'>
