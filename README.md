@@ -52,8 +52,7 @@ Die nötigen Einstellungen habe ich in der application.properties-Datei vorgenom
 
 Zu Beginn meines Projekts stand ich vor der Herausforderung, einen geeigneten Startpunkt zu finden, was mich zunächst vor Schwierigkeiten stellte. Insbesondere die Implementierung von CSRF-Schutz stellte sich als komplex heraus. Da es zunächst nicht wie geplant funktionierte, war ich gezwungen, verschiedene Ansätze auszuprobieren und gründliche Tests durchzuführen, um die Funktionalität sicherzustellen.
 
-Eine weitere bedeutende Herausforderung war die Entwicklung der Klasse CustomAuthenticationProvider. Es war schwierig für mich, die Sicherheitsprotokolle für den Login-Prozess korrekt zu programmieren. Das größte Problem war, dass ich auf ein Hindernis stieß, bei dem der Login-Prozess nicht funktionierte, und trotz intensiver Bemühungen und Recherche konnte ich das Problem nicht lösen.
-
+Eine weitere bedeutende Herausforderung war die Entwicklung der Klasse CustomAuthenticationProvider. Es war schwierig für mich, die Sicherheitsprotokolle für den Login-Prozess korrekt zu programmieren. Das größte Problem war, dass ich auf ein Hindernis stieß, bei dem der Login-Prozess nicht funktionierte.
 Betrachte ich mein Projekt rückblickend, sehe ich deutlich Verbesserungspotential in der Verwaltung der Benutzerrollen. Die aktuelle Implementierung könnte flexibler sein, um eine effektivere Handhabung verschiedener Rollen und Berechtigungen zu ermöglichen.
 
 Obwohl mein Projekt aufgrund seiner Komplexität schwierig war, hat es mir wertvolle Lektionen für zukünftige Arbeiten geliefert. Jede einzelne Herausforderung hat dazu beigetragen, mein Verständnis und meine Fähigkeiten zu erweitern, und ich freue mich darauf, diese Erfahrungen in zukünftige Projekte einzubringen.
